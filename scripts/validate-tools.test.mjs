@@ -33,7 +33,22 @@ test("rejects external tool with non-https url", () => {
   assert.equal(result.ok, false);
 });
 
+test("rejects submodule tool with null path", () => {
+  const result = validateToolFile(path.join(here, "_fixtures/valid-tool.json"), {
+    overrideContent: { type: "submodule", path: null, url: null },
+  });
+  assert.equal(result.ok, false);
+});
+
+test("rejects external tool with null url", () => {
+  const result = validateToolFile(path.join(here, "_fixtures/valid-tool.json"), {
+    overrideContent: { type: "external", path: null, url: null },
+  });
+  assert.equal(result.ok, false);
+});
+
 test("validateAll returns map of file→result", () => {
   const result = validateAll(path.join(here, "_fixtures"));
-  assert.ok("valid-tool.json" in result);
+  assert.equal(result["valid-tool.json"].ok, true);
+  assert.equal(result["invalid-tool.json"].ok, false);
 });

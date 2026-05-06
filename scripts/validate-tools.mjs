@@ -27,7 +27,7 @@ export function validateToolFile(filePath, opts = {}) {
     }
   }
   const expectedSlug = opts.expectedSlug ?? path.basename(filePath, ".json");
-  if (content.slug !== expectedSlug) {
+  if (typeof content.slug === "string" && content.slug !== expectedSlug) {
     errors.push(`slug "${content.slug}" must match filename "${expectedSlug}"`);
   }
   return errors.length === 0 ? { ok: true } : { ok: false, errors };
