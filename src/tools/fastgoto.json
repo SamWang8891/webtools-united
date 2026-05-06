@@ -6,8 +6,8 @@
   "repo": "https://github.com/SamWang8891/pika",
   "icon": "pika.png",
   "i18n": {
-    "en": { "title": "Fastgoto", "description": "Quick browser launcher and link organizer." },
-    "zh-Hant": { "title": "Fastgoto", "description": "快速啟動瀏覽器分頁與連結整理。" }
+    "en": { "title": "Fastgoto", "description": "A short URL service that generates shortened key based on English vocabularies." },
+    "zh-Hant": { "title": "Fastgoto", "description": "基於英文單字生成的短網址生成器。" }
   },
   "tags": ["productivity", "launcher", "links"]
 }
