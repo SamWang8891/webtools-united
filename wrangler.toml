@@ -1,0 +1,13 @@
+name = "tools365"
+main = "dist-worker/index.js"
+compatibility_date = "2026-05-01"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"
+
+[[routes]]
+pattern = "tools365.link/*"
+zone_name = "tools365.link"
+custom_domain = true
