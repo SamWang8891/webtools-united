@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "types": ["vite/client", "node"]
   },
   "include": ["src", "worker"],
