@@ -1,0 +1,13 @@
+{
+  "slug": "qrcode-generator",
+  "type": "submodule",
+  "path": "/qrcode-generator/",
+  "url": null,
+  "repo": "https://github.com/SamWang8891/qrcode-generator",
+  "icon": null,
+  "i18n": {
+    "en": { "title": "QR Code Generator", "description": "Make QR codes from text or URLs, right in the browser." },
+    "zh-Hant": { "title": "QR Code 產生器", "description": "在瀏覽器內把文字或網址轉成 QR Code。" }
+  },
+  "tags": ["qr", "generator", "code"]
+}

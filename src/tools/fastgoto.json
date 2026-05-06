@@ -1,0 +1,13 @@
+{
+  "slug": "fastgoto",
+  "type": "external",
+  "path": null,
+  "url": "https://fastgoto.xyz",
+  "repo": "https://github.com/SamWang8891/pika",
+  "icon": null,
+  "i18n": {
+    "en": { "title": "Fastgoto", "description": "Quick browser launcher and link organizer." },
+    "zh-Hant": { "title": "Fastgoto", "description": "快速啟動瀏覽器分頁與連結整理。" }
+  },
+  "tags": ["productivity", "launcher", "links"]
+}

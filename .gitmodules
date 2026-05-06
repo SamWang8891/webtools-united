@@ -1,0 +1,6 @@
+[submodule "tools-vendored/wheel"]
+	path = tools-vendored/wheel
+	url = git@github.com:SamWang8891/wheel.git
+[submodule "tools-vendored/qrcode-generator"]
+	path = tools-vendored/qrcode-generator
+	url = git@github.com:SamWang8891/qrcode-generator.git

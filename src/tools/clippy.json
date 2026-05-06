@@ -1,0 +1,13 @@
+{
+  "slug": "clippy",
+  "type": "external",
+  "path": null,
+  "url": "https://clippy.smashit.tw",
+  "repo": "https://github.com/SamWang8891/clippy",
+  "icon": null,
+  "i18n": {
+    "en": { "title": "Clippy", "description": "Clipboard utility for quick copy and share." },
+    "zh-Hant": { "title": "Clippy", "description": "快速複製與分享的剪貼簿小工具。" }
+  },
+  "tags": ["clipboard", "utility"]
+}
