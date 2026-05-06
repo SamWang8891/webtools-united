@@ -17,7 +17,7 @@ export function Card({ tool, lang }: Props) {
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className="group relative flex gap-5 rounded-lg border border-border bg-card p-5 hover:-translate-y-0.5 hover:shadow-md transition-transform"
+      className="group relative flex h-full gap-5 rounded-lg border border-border bg-card p-5 hover:-translate-y-0.5 hover:shadow-md transition-transform"
     >
       <img
         src={`/favicons/${tool.slug}.png`}
