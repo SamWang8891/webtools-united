@@ -1,0 +1,10 @@
+.idea/
+.claude/
+node_modules/
+dist/
+dist-worker/
+.wrangler/
+.DS_Store
+*.log
+.env
+.env.local
