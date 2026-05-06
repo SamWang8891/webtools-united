@@ -15,6 +15,7 @@ Live site: **[tools365.link](https://tools365.link)**
 | --- | --- | --- |
 | [Clippy](https://clippy.smashit.tw) | external | Clipboard utility for quick copy and share. |
 | [Fastgoto](https://fastgoto.xyz) | external | Quick browser launcher and link organizer. |
+| [favicon.io](https://favicon.io) | external | Generate favicons from text, images, or emoji. |
 | [QR Code Generator](/qrcode-generator/) | embedded | Make QR codes from text or URLs, right in the browser. |
 | [Spinning Wheel](/wheel/) | embedded | Random pick wheel for decisions and giveaways. |
 <!-- END TOOLS -->

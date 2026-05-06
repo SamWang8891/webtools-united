@@ -27,7 +27,10 @@ export function Card({ tool, lang }: Props) {
         className="h-12 w-12 rounded-md object-contain bg-bg flex-shrink-0"
         loading="lazy"
         onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.visibility = "hidden";
+          const img = e.currentTarget as HTMLImageElement;
+          if (img.dataset.fallback === "1") return;
+          img.dataset.fallback = "1";
+          img.src = "/favicon.svg";
         }}
       />
       <div className="min-w-0 flex-1">

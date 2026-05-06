@@ -1,0 +1,13 @@
+{
+  "slug": "favicon-io",
+  "type": "external",
+  "path": null,
+  "url": "https://favicon.io",
+  "repo": "https://favicon.io",
+  "icon": null,
+  "i18n": {
+    "en": { "title": "favicon.io", "description": "Generate favicons from text, images, or emoji." },
+    "zh-Hant": { "title": "favicon.io", "description": "用文字、圖片或 emoji 產生網站小圖示。" }
+  },
+  "tags": ["favicon", "generator", "icon"]
+}
