@@ -8,6 +8,5 @@ binding = "ASSETS"
 not_found_handling = "404-page"
 
 [[routes]]
-pattern = "tools365.link/*"
-zone_name = "tools365.link"
+pattern = "tools365.link"
 custom_domain = true
