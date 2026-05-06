@@ -1,0 +1,42 @@
+name: auto-seo prompt
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/tools/**'
+      - 'src/i18n/**'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  prompt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - id: detect
+        run: |
+          BASE=${{ github.event.pull_request.base.sha }}
+          CHANGED=$(git diff --name-only "$BASE"...HEAD)
+          NEEDS=0
+          if echo "$CHANGED" | grep -q '^src/tools/.*\.json$'; then
+            if ! echo "$CHANGED" | grep -q '^public/favicons/'; then NEEDS=1; fi
+          fi
+          echo "needs=$NEEDS" >> "$GITHUB_OUTPUT"
+      - if: steps.detect.outputs.needs == '1'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: auto-seo
+          message: |
+            This PR adds or changes a tool but doesn't include regenerated SEO files (favicons, sitemap, README table).
+
+            Reply with **`/regen-seo`** and I'll generate them and push the changes back to this branch.

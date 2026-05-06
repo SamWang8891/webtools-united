@@ -1,0 +1,31 @@
+name: i18n coverage
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - id: i18n
+        run: |
+          REPORT=$(node scripts/check-i18n.mjs)
+          {
+            echo 'report<<EOF'
+            echo "$REPORT"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+      - uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: i18n-coverage
+          message: ${{ steps.i18n.outputs.report }}

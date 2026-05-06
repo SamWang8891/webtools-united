@@ -1,0 +1,78 @@
+name: auto-seo dispatch
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  regen:
+    if: |
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/regen-seo')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify commenter authorization
+        id: auth
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner, repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+            const commenter = context.payload.comment.user.login;
+            const author = pr.user.login;
+            let ok = commenter === author;
+            if (!ok) {
+              const { data: perm } = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner, repo: context.repo.repo, username: commenter,
+              });
+              ok = ['admin', 'write'].includes(perm.permission);
+            }
+            if (!ok) {
+              await github.rest.reactions.createForIssueComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                comment_id: context.payload.comment.id, content: '-1',
+              });
+              core.setFailed('not authorized');
+              return;
+            }
+            core.setOutput('ref', pr.head.ref);
+            core.setOutput('repo', pr.head.repo.full_name);
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.auth.outputs.repo }}
+          ref: ${{ steps.auth.outputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run validate
+      - run: npm run build:favicons
+      - run: npm run build:seo
+      - run: npm run build:readme
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name "seo-bot"
+          git config user.email "seo-bot@users.noreply.github.com"
+          git add public/favicons README.md dist/sitemap.xml dist/robots.txt 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no-op"
+            echo "sha=" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: regenerate seo artifacts"
+            git push
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: auto-seo
+          message: |
+            ${{ steps.commit.outputs.sha && format('Done — pushed `{0}`.', steps.commit.outputs.sha) || 'Nothing to regenerate.' }}
