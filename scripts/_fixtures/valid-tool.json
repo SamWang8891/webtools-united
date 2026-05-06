@@ -1,0 +1,12 @@
+{
+  "slug": "valid-tool",
+  "type": "submodule",
+  "path": "/valid-tool/",
+  "url": null,
+  "repo": "https://github.com/test/valid-tool",
+  "icon": null,
+  "i18n": {
+    "en": { "title": "Valid Tool", "description": "A valid tool description." }
+  },
+  "tags": ["test"]
+}
