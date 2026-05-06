@@ -30,7 +30,7 @@ export function Card({ tool, lang }: Props) {
           const img = e.currentTarget as HTMLImageElement;
           if (img.dataset.fallback === "1") return;
           img.dataset.fallback = "1";
-          img.src = "/favicon.svg";
+          img.src = "/logo.svg";
         }}
       />
       <div className="min-w-0 flex-1">
