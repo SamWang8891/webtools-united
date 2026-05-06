@@ -12,10 +12,12 @@ interface Props {
 
 export function LanguageSwitcher({ lang }: Props) {
   function go(target: Lang) {
+    if (target === lang) return;
     try {
       document.cookie = `wt-lang=${target}; path=/; max-age=31536000; samesite=lax`;
     } catch {}
-    location.href = ROUTES[target];
+    history.pushState(null, "", ROUTES[target] + location.hash);
+    window.dispatchEvent(new Event("wt-langchange"));
   }
   return (
     <div role="group" aria-label={t(lang, "lang.label")} className="text-base flex rounded-md border border-border overflow-hidden">
