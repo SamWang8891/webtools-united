@@ -12,7 +12,5 @@ labels: suggestion
 **One-sentence description:**
 
 **Why it belongs here:**
-- [ ] Single-purpose
-- [ ] No login required
-- [ ] No ads or trackers
-- [ ] No data collection
+- [ ] If submodule: runs entirely in the browser (or uses a backend not hosted by this site)
+- [ ] If external link: target site is not malicious or harmful

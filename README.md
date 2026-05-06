@@ -1,6 +1,8 @@
 # webtools-united
 
-A curated collection of small, single-purpose web tools — no login, no ads, no data collection.
+A curated collection of web tools.
+
+Submodule tools must run entirely in the browser (or use a backend that does **not** depend on this site, since we don't host one). If your tool needs a server we operate, list it as an **external link** instead. Linked tools must not be malicious or harmful sites.
 
 Each tool is either an embedded app (built as a submodule and served from this site) or an external link with metadata. The registry is a flat directory of JSON files, one per tool, so contributors never touch shared code and PRs never conflict.
 

@@ -2,12 +2,17 @@
 
 ## What kinds of tools belong here
 
-- Small, single-purpose web tools (converters, generators, utilities, etc.)
-- No login required
-- No ads or third-party trackers
-- No server-side data collection — tools run entirely in the browser
+- Web tools (converters, generators, utilities, etc.)
+- **Submodule (embedded) tools must be frontend-only** — they run inside the browser. If a tool needs a backend, it must be a backend the tool itself owns and operates; this site has no server, so it cannot host backends for you. Tools that require a server we'd have to run should be added as **external links** instead.
+- The target of an external link must not be a malicious, deceptive, or otherwise harmful site.
 
 If your tool fits those constraints, it belongs here.
+
+---
+
+## Where to send PRs
+
+**All PRs must target the `dev` branch, not `main`.** `main` is the deployed branch; `dev` is where contributions land and get integrated before promotion.
 
 ---
 
