@@ -4,7 +4,7 @@ import { t } from "../i18n";
 export function Footer({ lang }: { lang: Lang }) {
   return (
     <footer className="border-t border-border mt-12">
-      <div className="mx-auto max-w-6xl px-4 py-6 text-base text-muted flex flex-wrap items-center gap-x-4 gap-y-2">
+      <div className="mx-auto max-w-screen-2xl px-4 py-6 text-base text-muted flex flex-wrap items-center gap-x-4 gap-y-2">
         <span>© 2026 webtools-united</span>
         <a
           href="https://github.com/SamWang8891/webtools-united"

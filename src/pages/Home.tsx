@@ -45,7 +45,7 @@ export function Home({ lang }: Props) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header lang={lang} query={raw} onQueryChange={setRaw} />
-      <main className="mx-auto max-w-6xl w-full px-4 py-6 flex-1">
+      <main className="mx-auto max-w-screen-2xl w-full px-4 py-6 flex-1">
         {results.length === 0 ? (
           <div className="text-center text-muted py-12">
             <p>{t(lang, "search.empty")}</p>
@@ -59,7 +59,7 @@ export function Home({ lang }: Props) {
             </a>
           </div>
         ) : (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <ul className="grid gap-5 [grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))]">
             {results.map((tool) => (
               <li key={tool.slug}>
                 <Card tool={tool} lang={lang} />
