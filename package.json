@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate && npm run build:submodules && npm run build:favicons && vite-ssg build && npm run build:seo && npm run build:readme",
+    "build": "npm run validate && npm run build:submodules && npm run build:favicons && vite build && node scripts/prerender.mjs && npm run build:seo && npm run build:readme",
     "build:submodules": "node scripts/build-submodules.mjs",
     "build:favicons": "node scripts/fetch-favicons.mjs",
     "build:seo": "node scripts/generate-sitemap.mjs",
