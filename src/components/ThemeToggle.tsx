@@ -54,7 +54,7 @@ export function ThemeToggle({ lang }: Props) {
       onClick={cycle}
       aria-label={`${t(lang, "theme.label")}: ${t(lang, `theme.${pref}`)}`}
       title={t(lang, `theme.${pref}`)}
-      className="rounded-md border border-border px-2.5 py-1 text-sm hover:bg-bg"
+      className="rounded-md border border-border px-3.5 py-1.5 text-base hover:bg-bg"
     >
       <span aria-hidden="true">{ICON[pref]}</span>
     </button>

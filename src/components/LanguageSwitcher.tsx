@@ -18,14 +18,14 @@ export function LanguageSwitcher({ lang }: Props) {
     location.href = ROUTES[target];
   }
   return (
-    <div role="group" aria-label={t(lang, "lang.label")} className="text-sm flex rounded-md border border-border overflow-hidden">
+    <div role="group" aria-label={t(lang, "lang.label")} className="text-base flex rounded-md border border-border overflow-hidden">
       {(["en", "zh-Hant"] as Lang[]).map((opt) => (
         <button
           key={opt}
           type="button"
           onClick={() => go(opt)}
           aria-current={lang === opt ? "true" : undefined}
-          className={`px-2.5 py-1 ${lang === opt ? "bg-accent text-white" : "hover:bg-bg"}`}
+          className={`px-3.5 py-1.5 ${lang === opt ? "bg-accent text-white" : "hover:bg-bg"}`}
         >
           {t(lang, `lang.${opt}`)}
         </button>

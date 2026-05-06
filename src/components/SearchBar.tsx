@@ -16,7 +16,7 @@ export function SearchBar({ lang, value, onChange }: Props) {
       placeholder={t(lang, "search.placeholder")}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full sm:w-64 rounded-md border border-border bg-bg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+      className="w-full sm:w-72 rounded-md border border-border bg-bg px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-accent"
     />
   );
 }

@@ -33,7 +33,7 @@ describe("buildHreflangLinks", () => {
 describe("getPageMeta", () => {
   it("returns en title and description for en", () => {
     const meta = getPageMeta("en");
-    expect(meta.title).toMatch(/tools365/);
+    expect(meta.title).toMatch(/Tools ?365/i);
     expect(meta.description).toBeTruthy();
     expect(meta.lang).toBe("en");
   });

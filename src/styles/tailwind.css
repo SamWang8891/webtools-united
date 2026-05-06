@@ -25,6 +25,6 @@ html {
   color: rgb(var(--fg));
 }
 
-* {
+[data-ready] * {
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }

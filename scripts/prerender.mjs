@@ -68,8 +68,13 @@ async function main() {
     const meta = getPageMeta(lang);
     const jsonLd = buildItemListJsonLd(tools, lang);
 
-    // Build the <head> fragment with all SEO tags.
-    const headTags = [
+    // The theme script must run BEFORE any CSS so the data-theme attribute
+    // is set before the first paint — otherwise the colour transitions fire
+    // on initial render and produce a flash on every page navigation.
+    const earlyHeadTags = `<script>${INLINE_SCRIPT}</script>`;
+
+    // Build the <head> fragment with all other SEO tags.
+    const lateHeadTags = [
       `<title>${escapeHtml(meta.title)}</title>`,
       `<meta name="description" content="${escapeHtml(meta.description)}">`,
       `<link rel="canonical" href="${meta.canonical}">`,
@@ -80,14 +85,20 @@ async function main() {
       `<meta property="og:type" content="website">`,
       `<meta name="twitter:card" content="summary">`,
       `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, "\\u003c")}</script>`,
-      `<script>${INLINE_SCRIPT}</script>`,
     ].join("\n    ");
 
     // Set the correct lang attribute on <html>.
     let html = shellNoTitle.replace('<html lang="en">', `<html lang="${lang}">`);
 
-    // Inject the new head tags right before </head>.
-    html = html.replace("</head>", `    ${headTags}\n  </head>`);
+    // Inject the theme script immediately after the viewport meta — this puts
+    // it before Vite's auto-injected <link rel="stylesheet"> in the shell.
+    html = html.replace(
+      /(<meta name="viewport"[^>]*>)/,
+      `$1\n    ${earlyHeadTags}`,
+    );
+
+    // Inject the SEO tags right before </head>.
+    html = html.replace("</head>", `    ${lateHeadTags}\n  </head>`);
 
     // Inject the React HTML into the shell.
     html = html.replace(

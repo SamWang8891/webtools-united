@@ -4,6 +4,7 @@ node_modules/
 dist/
 dist-worker/
 .wrangler/
+.vite-ssg-temp/
 .DS_Store
 *.log
 .env
