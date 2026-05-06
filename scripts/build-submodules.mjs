@@ -24,7 +24,10 @@ function buildOne(tool) {
   }
   console.log(`▶ building ${tool.slug}…`);
   execSync("npm ci", { cwd: dir, stdio: "inherit" });
-  execSync("npm run build", { cwd: dir, stdio: "inherit" });
+  // Pass --base so all asset URLs get prefixed with the slug path. Without
+  // this the submodule emits root-relative /assets/... paths, which 404 when
+  // the app is mounted under tools365.link/<slug>/.
+  execSync(`npm run build -- --base=/${tool.slug}/`, { cwd: dir, stdio: "inherit" });
   const srcDist = path.join(dir, "dist");
   if (!fs.existsSync(srcDist)) {
     throw new Error(`${tool.slug}: build did not produce dist/`);
