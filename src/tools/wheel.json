@@ -6,8 +6,8 @@
   "repo": "https://github.com/SamWang8891/wheel",
   "icon": "wheel.svg",
   "i18n": {
-    "en": { "title": "Spinning Wheel", "description": "Random pick wheel for decisions and giveaways." },
-    "zh-Hant": { "title": "輪盤抽選", "description": "隨機決定、抽獎用的轉盤工具。" }
+    "en": { "title": "Midnight Carnival", "description": "Random pick wheel for decisions and giveaways." },
+    "zh-Hant": { "title": "幸運轉盤", "description": "隨機決定、抽獎用的轉盤工具。" }
   },
   "tags": ["random", "decision", "wheel"]
 }
