@@ -24,7 +24,7 @@ export function Card({ tool, lang }: Props) {
         alt=""
         width={48}
         height={48}
-        className="h-12 w-12 rounded-md object-contain bg-bg flex-shrink-0"
+        className="h-12 w-12 rounded-md object-contain flex-shrink-0"
         loading="lazy"
         onError={(e) => {
           const img = e.currentTarget as HTMLImageElement;
