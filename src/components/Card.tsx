@@ -20,7 +20,7 @@ export function Card({ tool, lang }: Props) {
       className="group relative flex h-full gap-5 rounded-lg border border-border bg-card p-5 hover:-translate-y-0.5 hover:shadow-md transition-transform"
     >
       <img
-        src={`/favicons/${tool.slug}.png`}
+        src={`/favicons/${tool.icon ?? `${tool.slug}.png`}`}
         alt=""
         width={48}
         height={48}

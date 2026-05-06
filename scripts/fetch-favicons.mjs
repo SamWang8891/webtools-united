@@ -41,13 +41,24 @@ async function fetchBuf(url) {
 }
 
 async function processTool(tool) {
-  const outFile = path.join(OUT_DIR, `${tool.slug}.png`);
+  // When the tool sets `icon`, the Card resolves /favicons/<icon> directly,
+  // so the fetcher only needs to ensure that file is in place. Three cases:
+  //   1. The file already exists in public/favicons/<icon> (user committed it).
+  //   2. There's an override at src/tools/icons/<icon> — copy it across.
+  //   3. Neither — error.
   if (tool.icon) {
-    const src = path.join(ICONS_OVERRIDE_DIR, tool.icon);
-    if (!fs.existsSync(src)) throw new Error(`icon override missing: ${src}`);
-    fs.copyFileSync(src, outFile);
-    return { slug: tool.slug, source: "override" };
+    const target = path.join(OUT_DIR, tool.icon);
+    if (fs.existsSync(target)) {
+      return { slug: tool.slug, source: "icon-direct" };
+    }
+    const override = path.join(ICONS_OVERRIDE_DIR, tool.icon);
+    if (fs.existsSync(override)) {
+      fs.copyFileSync(override, target);
+      return { slug: tool.slug, source: "override" };
+    }
+    throw new Error(`icon "${tool.icon}" not found in ${OUT_DIR} or ${ICONS_OVERRIDE_DIR}`);
   }
+  const outFile = path.join(OUT_DIR, `${tool.slug}.png`);
   if (fs.existsSync(outFile) && process.env.FORCE_REFETCH !== "1") {
     return { slug: tool.slug, source: "cached" };
   }
