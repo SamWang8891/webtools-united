@@ -1,0 +1,17 @@
+{
+  "header.title": "tools365",
+  "header.tagline": "A united directory of small web tools.",
+  "search.placeholder": "Search tools…",
+  "search.empty": "No tools match.",
+  "search.suggest": "Suggest one →",
+  "lang.label": "Language",
+  "lang.en": "English",
+  "lang.zh-Hant": "繁中",
+  "theme.light": "Light",
+  "theme.dark": "Dark",
+  "theme.auto": "Auto",
+  "theme.label": "Theme",
+  "card.external": "External tool",
+  "card.embedded": "Embedded tool",
+  "footer.repo": "Source"
+}

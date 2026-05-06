@@ -1,0 +1,17 @@
+{
+  "header.title": "tools365",
+  "header.tagline": "集結各式小工具的網站。",
+  "search.placeholder": "搜尋工具…",
+  "search.empty": "沒有符合的工具。",
+  "search.suggest": "推薦一個 →",
+  "lang.label": "語言",
+  "lang.en": "English",
+  "lang.zh-Hant": "繁中",
+  "theme.light": "淺色",
+  "theme.dark": "深色",
+  "theme.auto": "自動",
+  "theme.label": "主題",
+  "card.external": "外部工具",
+  "card.embedded": "內建工具",
+  "footer.repo": "原始碼"
+}
